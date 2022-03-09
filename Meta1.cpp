@@ -2,7 +2,7 @@
 #include <vector>
 
 
-class Tree{ 
+class Tree { 
     struct Node { 
         std::string m_category;
         std::vector<struct Node *> m_sons;
@@ -32,18 +32,17 @@ class Tree{
         }
     }
 
-    bool m_insert(Node *node, const std::string category, const int value, const int num_sons) {
+    bool m_insert(Node *node, const std::string &category, const int &value, const int &num_sons) {
 
         if (node != nullptr) {
-            
             if (node->m_size <= node->m_num_sons) {
                 for (int i = 0; i < node->m_num_sons; ++i) {
+
                     if (m_insert(node->m_sons[i], category, value, num_sons) == true) {
                         return true;
-                    }
-                    if (node->m_sons[i] == nullptr) {
+                    } else if (node->m_sons[i] == nullptr) {
                         node->m_sons[i] = new Node(category, value, num_sons);
-                        node->m_sons[i]->m_size += 1;
+                        node->m_size += 1;
                         return true;
                     }
                 }
@@ -70,10 +69,9 @@ public:
         m_root = nullptr;
     }
 
-    bool insert(const std::string category, const int value, const int num_sons) {
+    bool insert(const std::string &category, const int &value, const int &num_sons) {
         if (m_root == nullptr) {
             m_root = new Node(category, value, num_sons);
-            m_root->m_size += 1;
             return true;
         } else {
             return m_insert(m_root, category, value, num_sons);

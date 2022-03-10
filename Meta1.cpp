@@ -52,12 +52,11 @@ class Tree {
         return false;
     }
 
-    void m_print(Node *node) {
-        if (node != nullptr) {
-            std::cout << node->m_category << " " << node->m_value << "\n";
-            for (int i = 0; i < node->m_num_sons; ++i) {
-                m_print(node->m_sons[i]);
-            }
+    void m_sum(Node *node, int &value) {
+        
+        for (int i = 0; i < node->m_num_sons; ++i) {
+            value += node->m_sons[i]->m_value;
+            m_sum(node->m_sons[i], value);
         }
     }
 
@@ -73,7 +72,14 @@ class Tree {
                     queue.push(aux->m_sons[i]);
                 }
 
-                std::cout << aux->m_category << " ";
+                int sum = 0;
+                m_sum(aux, sum);
+
+                if (j == s - 1) {
+                    std::cout << aux->m_category << "(" << sum + aux->m_value << ")";
+                } else {
+                    std::cout << aux->m_category << "(" << sum + aux->m_value << ") ";
+                }
                 queue.pop();
             }
             std::cout << "\n";
@@ -96,11 +102,6 @@ public:
         } else {
             return m_insert(m_root, category, value, num_sons);
         }
-    }
-
-    void print() {
-        m_print(m_root);
-        std::cout << "\n";
     }
 
     void print_by_level() {
@@ -127,8 +128,6 @@ int main() {
     std::cout << tree.insert("country", 20, 0)   << "\n";
     std::cout << tree.insert("ERRO", 2, 0)       << "\n";
     std::cout << tree.insert("NAO ENTRE?", 2,2)  << "\n";
-
-    tree.print();
 
     tree.print_by_level();
 

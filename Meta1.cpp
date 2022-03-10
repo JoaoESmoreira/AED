@@ -60,6 +60,27 @@ class Tree {
         }
     }
 
+    void m_print_by_level(Node *node) {
+        if (node != nullptr) {
+
+            bool flag = false;
+
+            for (int i = 0; i < node->m_num_sons; ++i) {
+                if (node->m_num_sons > 0 && node->m_sons[i] != nullptr) {
+                    std::cout << node->m_sons[i]->m_category << " ";
+                    flag = true;
+                }
+            }
+            if (flag) {
+                std::cout << "\n";
+            }
+            for (int i = 0; i < node->m_num_sons; ++i) {
+                if (node->m_num_sons > 0 && node->m_sons[i] != nullptr)
+                    m_print_by_level(node->m_sons[i]);
+            }
+        }
+    }
+
 public:
     Tree () : m_root(nullptr) {}
     Tree (const std::string category, const int value, const int num_sons) : m_root(new Node(category, value, num_sons)) {}
@@ -82,6 +103,11 @@ public:
         m_print(m_root);
         std::cout << "\n";
     }
+
+    void print_by_level() {
+        std::cout << m_root->m_category << "\n";
+        m_print_by_level(m_root);
+    }
 };
 
 
@@ -103,6 +129,8 @@ int main() {
     std::cout << tree.insert("NAO ENTRE?", 2,2)  << "\n";
 
     tree.print();
+
+    tree.print_by_level();
 
     return 0;
 }

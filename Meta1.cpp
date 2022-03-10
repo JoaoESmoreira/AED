@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 
 
 class Tree { 
@@ -60,24 +61,16 @@ class Tree {
         }
     }
 
-    void m_print_by_level(Node *node) {
-        if (node != nullptr) {
+    void m_print_by_level(Node *node, std::queue<Node *> queue) {
+        while (!queue.empty()) {
+            Node *aux = queue.front();
 
-            bool flag = false;
+            for (int i = 0; i < aux->m_num_sons; ++i) {
+                queue.push(aux->m_sons[i]);
+            }
 
-            for (int i = 0; i < node->m_num_sons; ++i) {
-                if (node->m_num_sons > 0 && node->m_sons[i] != nullptr) {
-                    std::cout << node->m_sons[i]->m_category << " ";
-                    flag = true;
-                }
-            }
-            if (flag) {
-                std::cout << "\n";
-            }
-            for (int i = 0; i < node->m_num_sons; ++i) {
-                if (node->m_num_sons > 0 && node->m_sons[i] != nullptr)
-                    m_print_by_level(node->m_sons[i]);
-            }
+            std::cout << aux->m_category << "\n";
+            queue.pop();
         }
     }
 
@@ -105,8 +98,9 @@ public:
     }
 
     void print_by_level() {
-        std::cout << m_root->m_category << "\n";
-        m_print_by_level(m_root);
+        std::queue<Node *> queue;
+        queue.push(m_root);
+        m_print_by_level(m_root, queue);
     }
 };
 

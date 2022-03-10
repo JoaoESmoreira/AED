@@ -62,15 +62,21 @@ class Tree {
     }
 
     void m_print_by_level(Node *node, std::queue<Node *> queue) {
+
         while (!queue.empty()) {
-            Node *aux = queue.front();
+            int s = queue.size();
 
-            for (int i = 0; i < aux->m_num_sons; ++i) {
-                queue.push(aux->m_sons[i]);
+            for (int j = 0; j < s; ++j) {
+                Node *aux = queue.front();
+
+                for (int i = 0; i < aux->m_num_sons; ++i) {
+                    queue.push(aux->m_sons[i]);
+                }
+
+                std::cout << aux->m_category << " ";
+                queue.pop();
             }
-
-            std::cout << aux->m_category << "\n";
-            queue.pop();
+            std::cout << "\n";
         }
     }
 

@@ -21,6 +21,8 @@ class Tree {
     };
 
     Node *m_root;
+    int m_capacity;
+    int m_size;
 
 
     void m_free_tree(Node *node) {
@@ -44,6 +46,8 @@ class Tree {
                     } else if (node->m_sons[i] == nullptr) {
                         node->m_sons[i] = new Node(category, value, num_sons);
                         node->m_size += 1;
+                        m_capacity += num_sons;
+                        m_size += 1;
                         return true;
                     }
                 }
@@ -87,8 +91,10 @@ class Tree {
     }
 
 public:
-    Tree () : m_root(nullptr) {}
-    Tree (const std::string category, const int value, const int num_sons) : m_root(new Node(category, value, num_sons)) {}
+    Tree () : m_root(nullptr), m_size(0), m_capacity(1) {}
+    Tree (const std::string category, const int value, const int num_sons) : 
+        m_root(new Node(category, value, num_sons)), m_size(1), m_capacity(num_sons) {}
+
 
     ~Tree () {
         m_free_tree(m_root);
@@ -98,6 +104,8 @@ public:
     bool insert(const std::string &category, const int &value, const int &num_sons) {
         if (m_root == nullptr) {
             m_root = new Node(category, value, num_sons);
+            m_capacity += num_sons;
+            m_size += 1;
             return true;
         } else {
             return m_insert(m_root, category, value, num_sons);
@@ -108,6 +116,14 @@ public:
         std::queue<Node *> queue;
         queue.push(m_root);
         m_print_by_level(m_root, queue);
+    }
+
+    int capacity() {
+        return m_capacity;
+    }
+
+    int size() {
+        return m_size;
     }
 };
 
@@ -120,16 +136,30 @@ int main() {
     std::cout << tree.insert("Arte", 5, 2)       << "\n";
     std::cout << tree.insert("Classic", 1000, 0) << "\n";
     std::cout << tree.insert("Foto", 50, 0)      << "\n";
+    std::cout << tree.insert("Livros", 100, 1)   << "\n";
+    std::cout << tree.insert("Todos", 0, 3)      << "\n";
+    std::cout << tree.insert("Arte", 5, 2)       << "\n";
+    std::cout << tree.insert("Classic", 1000, 0) << "\n";
+    std::cout << tree.insert("Foto", 50, 0)      << "\n";
     std::cout << tree.insert("Livros", 100, 0)   << "\n";
     std::cout << tree.insert("Musica", 0, 3)     << "\n";
     std::cout << tree.insert("Rock", 20, 1)      << "\n";
     std::cout << tree.insert("softROck", 5, 0)   << "\n";
     std::cout << tree.insert("pop", 20, 0)       << "\n";
     std::cout << tree.insert("country", 20, 0)   << "\n";
+    std::cout << tree.insert("Musica", 0, 3)     << "\n";
+    std::cout << tree.insert("Rock", 20, 1)      << "\n";
+    std::cout << tree.insert("softROck", 5, 0)   << "\n";
+    std::cout << tree.insert("pop", 20, 0)       << "\n";
+    std::cout << tree.insert("country", 20, 2)   << "\n";
     std::cout << tree.insert("ERRO", 2, 0)       << "\n";
-    std::cout << tree.insert("NAO ENTRE?", 2,2)  << "\n";
+    std::cout << tree.insert("NAO ENTRE?", 2,0)  << "\n";
 
     tree.print_by_level();
+
+    if (tree.capacity() == tree.size())
+        std::cout << "Full Tree\n";
+        std::cout << tree.capacity() << " " << tree.size() << "\n";
 
     return 0;
 }

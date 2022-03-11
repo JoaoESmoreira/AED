@@ -64,7 +64,7 @@ class Tree {
         }
     }
 
-    void m_print_by_level(Node *node, std::queue<Node *> queue) {
+    void m_print_by_level(std::queue<Node *> queue) {
 
         while (!queue.empty()) {
             int s = queue.size();
@@ -91,9 +91,9 @@ class Tree {
     }
 
 public:
-    Tree () : m_root(nullptr), m_size(0), m_capacity(1) {}
+    Tree () : m_root(nullptr), m_capacity(1), m_size(0){}
     Tree (const std::string category, const int value, const int num_sons) : 
-        m_root(new Node(category, value, num_sons)), m_size(1), m_capacity(num_sons) {}
+        m_root(new Node(category, value, num_sons)), m_capacity(num_sons), m_size(1) {}
 
 
     ~Tree () {
@@ -115,7 +115,7 @@ public:
     void print_by_level() {
         std::queue<Node *> queue;
         queue.push(m_root);
-        m_print_by_level(m_root, queue);
+        m_print_by_level(queue);
     }
 
     int capacity() {
@@ -132,34 +132,17 @@ public:
 int main() {
 
     Tree tree;
-    std::cout << tree.insert("Todos", 0, 3)      << "\n";
-    std::cout << tree.insert("Arte", 5, 2)       << "\n";
-    std::cout << tree.insert("Classic", 1000, 0) << "\n";
-    std::cout << tree.insert("Foto", 50, 0)      << "\n";
-    std::cout << tree.insert("Livros", 100, 1)   << "\n";
-    std::cout << tree.insert("Todos", 0, 3)      << "\n";
-    std::cout << tree.insert("Arte", 5, 2)       << "\n";
-    std::cout << tree.insert("Classic", 1000, 0) << "\n";
-    std::cout << tree.insert("Foto", 50, 0)      << "\n";
-    std::cout << tree.insert("Livros", 100, 0)   << "\n";
-    std::cout << tree.insert("Musica", 0, 3)     << "\n";
-    std::cout << tree.insert("Rock", 20, 1)      << "\n";
-    std::cout << tree.insert("softROck", 5, 0)   << "\n";
-    std::cout << tree.insert("pop", 20, 0)       << "\n";
-    std::cout << tree.insert("country", 20, 0)   << "\n";
-    std::cout << tree.insert("Musica", 0, 3)     << "\n";
-    std::cout << tree.insert("Rock", 20, 1)      << "\n";
-    std::cout << tree.insert("softROck", 5, 0)   << "\n";
-    std::cout << tree.insert("pop", 20, 0)       << "\n";
-    std::cout << tree.insert("country", 20, 2)   << "\n";
-    std::cout << tree.insert("ERRO", 2, 0)       << "\n";
-    std::cout << tree.insert("NAO ENTRE?", 2,0)  << "\n";
+    std::string category;
+    int value, num_sons;
+
+    while (tree.size() < tree.capacity()) {
+        std::cin >> category >> value >> num_sons;
+
+        tree.insert(category, value, num_sons);
+
+    }
 
     tree.print_by_level();
-
-    if (tree.capacity() == tree.size())
-        std::cout << "Full Tree\n";
-        std::cout << tree.capacity() << " " << tree.size() << "\n";
 
     return 0;
 }

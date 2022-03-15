@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-
+#include <fstream>
 
 class Tree { 
     struct Node { 
@@ -135,14 +135,15 @@ int main() {
     std::string category;
     int value, num_sons;
 
-    while (tree.size() < tree.capacity()) {
-        std::cin >> category >> value >> num_sons;
+    std::ifstream file ("entradas.txt");
+
+    while (tree.size() < tree.capacity() && file >> category && file >> value && file >> num_sons) {
+        //std::cin >> category >> value >> num_sons;
 
         tree.insert(category, value, num_sons);
-
     }
 
-    tree.print_by_level();
+    //tree.print_by_level();
 
     return 0;
 }

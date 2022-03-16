@@ -4,7 +4,7 @@
 class AVL {
     struct Node {
         std::string m_user_name;
-        std::map<int, int> m_credit_card;
+        std::map<std::string, int> m_credit_card;
 
         struct Node *left;
         struct Node *right;
@@ -12,7 +12,7 @@ class AVL {
         int m_height;
 
         Node() : m_user_name(0), left(nullptr), right(nullptr), m_height(0) {}
-        Node(const std::string user_name, const int credit_card, int date) : m_user_name(user_name), left(nullptr), right(nullptr), m_height(1) {
+        Node(const std::string user_name, const std::string credit_card, int date) : m_user_name(user_name), left(nullptr), right(nullptr), m_height(1) {
             m_credit_card[credit_card] = date;
         }
     };
@@ -100,7 +100,7 @@ class AVL {
     }
 
 
-    Node* m_insert(Node *node, const std::string user_name, const int credit_card, int date) {
+    Node* m_insert(Node *node, const std::string user_name, const std::string credit_card, int date) {
 
         // Basic insertion
         if (node == nullptr) {
@@ -147,7 +147,7 @@ class AVL {
 
     void m_find(Node *node, const std::string user_name) {
         if (node == nullptr) {
-            std::cout << "NAO ENCONTRAO\n";
+            std::cout << "NAO ENCONTRADO\n";
 
         } else if (user_name.compare(node->m_user_name) == 0) {
             for (auto key : node->m_credit_card) {
@@ -167,7 +167,7 @@ class AVL {
 
             std::cout << node->m_user_name << " ";
 
-            for (std::map<int, int>::iterator it = node->m_credit_card.begin(); it != node->m_credit_card.end(); ) {
+            for (std::map<std::string, int>::iterator it = node->m_credit_card.begin(); it != node->m_credit_card.end(); ) {
                 std::cout << it->first<< " " << it->second;
                 if (++it != node->m_credit_card.end()) {
                     std::cout << " ";
@@ -182,7 +182,7 @@ class AVL {
 public:
 
     AVL() : m_root(nullptr) {}
-    AVL(const std::string user_name, const int credit_card, int date) : m_root(new Node(user_name, credit_card, date)) {}
+    AVL(const std::string user_name, const std::string credit_card, int date) : m_root(new Node(user_name, credit_card, date)) {}
 
     ~AVL() {
         m_free_AVL(m_root);
@@ -190,7 +190,7 @@ public:
         std::cout << "LISTAGEM APAGADA\n";
     }
 
-    void insert(const std::string user_name, const int credit_card, int date) {
+    void insert(const std::string user_name, const std::string credit_card, int date) {
         // insert/update a node 
         m_root = m_insert(m_root, user_name, credit_card, date);
     }
@@ -211,16 +211,26 @@ public:
 int main() {
 
     AVL tree;
+    std::string comand, user_name, credit_card;
+    int date;
 
-    tree.insert("joao", 1234, 1414);
-    tree.insert("joao", 1234, 1213);
-    tree.insert("joao", 1235, 1414);
-    tree.insert("emanuel", 1234, 1234);
-    tree.insert("emanuel", 1234, 1243);
-    tree.insert("emanuel", 12345, 1234);
-    tree.find("joao");
-    tree.print();
+    do {
+        std::cin >> comand;
 
+        if (comand.compare("ACRESCENTA") == 0) {
+           std::cin >> user_name >> credit_card >> date;
 
+           tree.insert(user_name, credit_card, date);
+        } else if (comand.compare("CONSULTA") == 0) {
+            std::cin >> user_name;
+
+            tree.find(user_name);
+        } else if (comand.compare("LISTAGEM") == 0) {
+            tree.print();
+        } else if (comand.compare("APAGA") == 0) {
+            tree.~AVL();
+        } 
+    } while (!comand.compare("FIM") == 0);
+    
     return 0;
 }

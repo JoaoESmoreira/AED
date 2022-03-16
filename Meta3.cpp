@@ -185,9 +185,10 @@ public:
     AVL(const std::string user_name, const std::string credit_card, int date) : m_root(new Node(user_name, credit_card, date)) {}
 
     ~AVL() {
-        m_free_AVL(m_root);
-        m_root = nullptr;
-        std::cout << "LISTAGEM APAGADA\n";
+        if (m_root != nullptr) {
+            m_free_AVL(m_root);
+            m_root = nullptr;
+        }
     }
 
     void insert(const std::string user_name, const std::string credit_card, int date) {
@@ -204,6 +205,10 @@ public:
         // print all AVLT
         m_print(m_root);
         std::cout << "FIM\n";
+    }
+    void apaga() {
+        m_free_AVL(m_root);
+        m_root = nullptr;
     }
 };
 
@@ -228,7 +233,8 @@ int main() {
         } else if (comand.compare("LISTAGEM") == 0) {
             tree.print();
         } else if (comand.compare("APAGA") == 0) {
-            tree.~AVL();
+            tree.apaga();
+            std::cout << "LISTAGEM APAGADA\n";
         } 
     } while (!comand.compare("FIM") == 0);
     

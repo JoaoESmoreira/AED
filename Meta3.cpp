@@ -146,7 +146,10 @@ class AVL {
     }
 
     void m_find(Node *node, const std::string user_name) {
-        if (user_name.compare(node->m_user_name) == 0) {
+        if (node == nullptr) {
+            std::cout << "NAO ENCONTRAO\n";
+
+        } else if (user_name.compare(node->m_user_name) == 0) {
             for (auto key : node->m_credit_card) {
                 std::cout << key.first << " " << key.second << "\n";
             } std::cout << "FIM" << "\n";
@@ -158,6 +161,24 @@ class AVL {
         }
     }
 
+    void m_print(Node *node) {
+        if (node != nullptr) {
+            m_print(node->left);
+
+            std::cout << node->m_user_name << " ";
+
+            for (std::map<int, int>::iterator it = node->m_credit_card.begin(); it != node->m_credit_card.end(); ) {
+                std::cout << it->first<< " " << it->second;
+                if (++it != node->m_credit_card.end()) {
+                    std::cout << " ";
+                } else {
+                    std::cout << "\n";
+                }
+            }
+            m_print(node->right);
+        }
+    }
+
 public:
 
     AVL() : m_root(nullptr) {}
@@ -166,6 +187,7 @@ public:
     ~AVL() {
         m_free_AVL(m_root);
         m_root = nullptr;
+        std::cout << "LISTAGEM APAGADA\n";
     }
 
     void insert(const std::string user_name, const int credit_card, int date) {
@@ -178,6 +200,11 @@ public:
         m_find(m_root, user_name);
     }
 
+    void print() {
+        // print all AVLT
+        m_print(m_root);
+        std::cout << "FIM\n";
+    }
 };
 
 
@@ -192,6 +219,7 @@ int main() {
     tree.insert("emanuel", 1234, 1243);
     tree.insert("emanuel", 12345, 1234);
     tree.find("joao");
+    tree.print();
 
 
     return 0;

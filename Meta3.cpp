@@ -12,7 +12,7 @@ class AVL {
         int m_height;
 
         Node() : m_user_name(0), left(nullptr), right(nullptr), m_height(0) {}
-        Node(std::string user_name, int credit_card, int date) : m_user_name(user_name), left(nullptr), right(nullptr), m_height(1) {
+        Node(const std::string user_name, const int credit_card, int date) : m_user_name(user_name), left(nullptr), right(nullptr), m_height(1) {
             m_credit_card[credit_card] = date;
         }
     };
@@ -50,14 +50,15 @@ class AVL {
     }
 
     Node* m_right_rotate(Node *node) {
+        // aux variables
         Node *left_son  = node->left;
         Node *grand_son = left_son->right;
-    
-        // Perform rotation
+
+        // rebalance
         left_son->right = node;
         node->left      = grand_son;
-    
-        // Update heights
+
+        // "re-height" 
         node->m_height     = m_node_height(node);
         left_son->m_height = m_node_height(left_son);
 
@@ -65,14 +66,15 @@ class AVL {
     }
 
     Node* m_left_rotate(Node *node) {
+        // aux variables
         Node *right_son = node->right;
         Node *grand_son = right_son->left;
     
-        // Perform rotation
+        // rebalance
         right_son->left = node;
         node->right = grand_son;
     
-        // Update heights
+        // "re-height" 
         node->m_height = m_node_height(node);
         right_son->m_height = m_node_height(right_son);
     
@@ -98,7 +100,7 @@ class AVL {
     }
 
 
-    Node* m_insert(Node *node, std::string user_name, int credit_card, int date) {
+    Node* m_insert(Node *node, const std::string user_name, const int credit_card, int date) {
 
         // Basic insertion
         if (node == nullptr) {
@@ -143,18 +145,37 @@ class AVL {
         return node;
     }
 
+    void m_find(Node *node, const std::string user_name) {
+        if (user_name.compare(node->m_user_name) == 0) {
+            for (auto key : node->m_credit_card) {
+                std::cout << key.first << " " << key.second << "\n";
+            } std::cout << "FIM" << "\n";
+
+        } else if (user_name.compare(node->m_user_name) < 0){
+            m_find(node->left, user_name);
+        } else if (user_name.compare(node->m_user_name) > 0) {
+            m_find(node->right, user_name);
+        }
+    }
+
 public:
 
     AVL() : m_root(nullptr) {}
-    AVL(std::string user_name, int credit_card, int date) : m_root(new Node(user_name, credit_card, date)) {}
+    AVL(const std::string user_name, const int credit_card, int date) : m_root(new Node(user_name, credit_card, date)) {}
 
     ~AVL() {
         m_free_AVL(m_root);
         m_root = nullptr;
     }
 
-    void insert(std::string user_name, int credit_card, int date) {
+    void insert(const std::string user_name, const int credit_card, int date) {
+        // insert/update a node 
         m_root = m_insert(m_root, user_name, credit_card, date);
+    }
+
+    void find(const std::string user_name) {
+        // print all credit cards of an user_name
+        m_find(m_root, user_name);
     }
 
 };
@@ -170,6 +191,7 @@ int main() {
     tree.insert("emanuel", 1234, 1234);
     tree.insert("emanuel", 1234, 1243);
     tree.insert("emanuel", 12345, 1234);
+    tree.find("joao");
 
 
     return 0;

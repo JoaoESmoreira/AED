@@ -1,6 +1,6 @@
 CC = g++
 FLAGS = -Wall -Wextra
-OBJS = Meta3.o
+OBJS = Meta2.o
 
 # generic
 all:		prog
@@ -18,6 +18,6 @@ prog:		$(OBJS)
 clean:		$(OBJS)
 			rm $(OBJS) prog
 
-Meta3.o:	Meta3.cpp
-			$(CC) $(FLAGS) -c Meta3.cpp
+Meta2.o:	Meta3.cpp
+			$(CC) $(FLAGS) -c Meta2.cpp
 

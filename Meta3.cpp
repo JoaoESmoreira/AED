@@ -1,5 +1,6 @@
 #include <iostream>
 #include <map>
+#include <fstream>
 
 class AVL {
     struct Node {
@@ -105,7 +106,7 @@ class AVL {
         // Basic insertion
         if (node == nullptr) {
             node = new Node(user_name, credit_card, date);
-            std::cout << "NOVO UTILIZADOR CRIADO\n";
+            // TODO std::cout << "NOVO UTILIZADOR CRIADO\n";
         } else if (user_name.compare(node->m_user_name) < 0) {
             node->left = m_insert(node->left, user_name, credit_card, date);
         } else if (user_name.compare(node->m_user_name) >  0) {
@@ -114,10 +115,10 @@ class AVL {
             
             if (node->m_credit_card.find(credit_card) != node->m_credit_card.end()) {
                 node->m_credit_card[credit_card] = date;
-                std::cout << "CARTAO ATUALIZADO\n";
+                // TODO std::cout << "CARTAO ATUALIZADO\n";
             } else {
                 node->m_credit_card[credit_card] = date;
-                std::cout << "NOVO CARTAO INSERIDO\n";
+                // TODO std::cout << "NOVO CARTAO INSERIDO\n";
             }
         }
 
@@ -147,12 +148,12 @@ class AVL {
 
     void m_find(Node *node, const std::string user_name) {
         if (node == nullptr) {
-            std::cout << "NAO ENCONTRADO\n";
+            // TODO std::cout << "NAO ENCONTRADO\n";
 
         } else if (user_name.compare(node->m_user_name) == 0) {
             for (auto key : node->m_credit_card) {
-                std::cout << key.first << " " << key.second << "\n";
-            } std::cout << "FIM" << "\n";
+                // TODO std::cout << key.first << " " << key.second << "\n";
+            } // TODO std::cout << "FIM" << "\n";
 
         } else if (user_name.compare(node->m_user_name) < 0){
             m_find(node->left, user_name);
@@ -219,15 +220,20 @@ int main() {
     std::string comand, user_name, credit_card;
     int date;
 
+    std::ifstream file ("input.txt");
+
     do {
-        std::cin >> comand;
+        // std::cin >> comand;
+        file >> comand;
 
         if (comand.compare("ACRESCENTA") == 0) {
-           std::cin >> user_name >> credit_card >> date;
+           // std::cin >> user_name >> credit_card >> date;
+           file >> user_name >> credit_card >> date;
 
            tree.insert(user_name, credit_card, date);
         } else if (comand.compare("CONSULTA") == 0) {
-            std::cin >> user_name;
+            // std::cin >> user_name;
+            file >> user_name;
 
             tree.find(user_name);
         } else if (comand.compare("LISTAGEM") == 0) {

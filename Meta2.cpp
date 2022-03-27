@@ -17,6 +17,7 @@ class SplayTree {
 
 
     Node* m_zig (Node *node) {
+        if (node != nullptr) {
         // store son and grandson
         Node *leftSon  = node->left;
         Node *grandSon = leftSon->right;
@@ -26,9 +27,12 @@ class SplayTree {
         leftSon->right = node;
 
         return leftSon;
+        }
+        return nullptr;
     }
 
     Node *m_zag (Node *node) {
+        if (node != nullptr) {
         // store son and grand son
         Node *rightSon = node->right;
         Node *grandSon = rightSon->left;
@@ -38,6 +42,8 @@ class SplayTree {
         rightSon->left = node;
 
         return rightSon;
+        }
+        return nullptr;
     }
 
     Node* m_insert(Node* node, const std::string name, const std::string hash, int value) {
@@ -46,18 +52,18 @@ class SplayTree {
             node = new Node(name, hash, value);
 
             std::cout << "NOVO ARTIGO INSERIDO\n";
-        } else if (name < node->left->m_name) {
+        } else if (name.compare(node->m_name) < 0) {
             node->left = m_insert(node->left, name, hash, value);
-        } else if (name > node->right->m_name) {
+        } else if (name.compare(node->m_name) > 0) {
             node->right = m_insert(node->right, name, hash, value);
         } else {
             std::cout << "ARTIGO JA EXISTENTE\n";
             return node;
         }
 
-        if (name.compare(node->left->m_name)) {
+        if (node->left != nullptr && name.compare(node->left->m_name) == 0) {
             return m_zig(node);
-        } else if (name.compare(node->right->m_name)) {
+        } else if (node->right != nullptr && name.compare(node->right->m_name) == 0) {
             return m_zag(node);
         }
 
@@ -91,9 +97,15 @@ int main() {
 
     SplayTree tree;
 
-    tree.insert("joao", "123", 123);
-    tree.insert("joa", "123", 123);
-    tree.insert("jo", "123", 123);
+    tree.insert("10", "123", 123);
+    tree.insert("15", "123", 123);
+    tree.insert("20", "123", 123);
+    tree.insert("30", "123", 123);
+
+    tree.insert("25", "123", 123);
+    tree.insert("12", "123", 123);
+    tree.insert("22", "123", 123);
+
     tree.print();
 
     return 0;

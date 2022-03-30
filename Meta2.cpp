@@ -118,8 +118,8 @@ class SplayTree {
 
     void m_print(Node *node) {
         if (node != nullptr) {
-            std::cout << node->m_name << "\n";
             m_print(node->left);
+            std::cout << node->m_name << "\n";
             m_print(node->right);
         }
     }
@@ -142,6 +142,7 @@ public:
 
     void print() {
         m_print(m_root);
+        std::cout << "FIM\n";
     }
 
     void find(const std::string &name) {

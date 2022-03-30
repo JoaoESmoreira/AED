@@ -1,11 +1,10 @@
 CC = g++
 FLAGS = -Wall -Wextra
 OBJS = Meta2.o
+.PHONY: all clean
 
 # generic
 all:		prog
-clean:		clean
-run:		run
 
 
 # not generic at all
@@ -18,6 +17,5 @@ prog:		$(OBJS)
 clean:		$(OBJS)
 			rm $(OBJS) prog
 
-Meta2.o:	Meta3.cpp
-			$(CC) $(FLAGS) -c Meta2.cpp
-
+%.o:		%.cpp
+			$(CC) $(FLAGS) -c $^

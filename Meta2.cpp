@@ -97,7 +97,7 @@ class SplayTree {
         return m_splay(node, name);
     }
 
-    Node* m_search(Node *node, const std::string &name) {
+    Node* m_find(Node *node, const std::string &name) {
         if (node != nullptr) {
 
             if (name.compare(node->m_name) == 0) {
@@ -105,21 +105,40 @@ class SplayTree {
                 std::cout << node->m_name << " " << node->m_hash << " " << node->m_value << "\nFIM\n";
                 return m_splay(node, name);
             } else if (name.compare(node->m_name) < 0) {
-                node->left = m_search(node->left, name);
+                node->left = m_find(node->left, name);
             } else if (name.compare(node->m_name) > 0) {
-                node->right = m_search(node->right, name);
+                node->right = m_find(node->right, name);
             }
             return m_splay(node, name);
         } else {
-            std::cout << "ARTIGO NAO ENCONTRADO\n";
+            std::cout << "ARTIGO NAO REGISTADO\n";
+            return nullptr;
+        }
+    }
+
+    Node* m_update(Node *node, const std::string &name, int value) {
+        if (node != nullptr) {
+
+            if (name.compare(node->m_name) == 0) {
+                node->m_value = value;
+                std::cout << "OFERTA ATUALIZADA\n";
+                return m_splay(node, name);
+            } else if (name.compare(node->m_name) < 0) {
+                node->left = m_update(node->left, name, value);
+            } else if (name.compare(node->m_name) > 0) {
+                node->right = m_update(node->right, name, value);
+            }
+            return m_splay(node, name);
+        } else {
+            std::cout << "ARTIGO NAO REGISTADO\n";
             return nullptr;
         }
     }
 
     void m_print(Node *node) {
         if (node != nullptr) {
+            std::cout << node->m_name << " " << node->m_hash << " " << node->m_value << "\n";
             m_print(node->left);
-            std::cout << node->m_name << "\n";
             m_print(node->right);
         }
     }
@@ -135,7 +154,6 @@ public:
         }
     }
 
-
     void insert(const std::string &name, const std::string &hash, int value) {
         m_root = m_insert(m_root, name, hash, value);
     }
@@ -146,7 +164,7 @@ public:
     }
 
     void find(const std::string &name) {
-        m_root = m_search(m_root, name);
+        m_root = m_find(m_root, name);
     }
 
     void delete_tree() {
@@ -156,6 +174,13 @@ public:
             std::cout << "CATALOGO APAGADO\n";
         }
     }
+
+    void update(const std::string &name, int value) {
+        m_root = m_update(m_root, name, value);
+    }
+    void fds() {
+        m_root->m_value = 20;
+    }
 };
 
 int main() {
@@ -163,62 +188,46 @@ int main() {
     SplayTree tree;
 
     tree.insert("10", "123", 123);
-    tree.print();
     tree.insert("15", "123", 123);
-    tree.print();
     tree.insert("20", "123", 123);
-    tree.print();
     tree.insert("30", "123", 123);
-    tree.print();
 
     tree.insert("25", "123", 123);
-    tree.print();
     tree.insert("12", "123", 123);
-    tree.print();
     tree.insert("22", "123", 123);
-    tree.print();
 
     tree.insert("23", "123", 123);
-    tree.print();
     tree.insert("17", "123", 123);
-    tree.print();
     tree.insert("21", "123", 123);
-    tree.print();
 
     tree.insert("40", "123", 123);
-    tree.print();
     tree.insert("18", "123", 123);
-    tree.print();
     tree.insert("19", "123", 123);
-    tree.print();
 
     tree.insert("16", "123", 123);
-    tree.print();
     tree.insert("50", "123", 123);
-    tree.print();
-
 
     tree.insert("12", "123", 123);
-    tree.print();
     tree.insert("20", "123", 123);
-    tree.print();
     tree.insert("30", "123", 123);
-    tree.print();
 
     tree.insert("10", "123", 123);
-    tree.print();
     tree.insert("30", "123", 123);
-    tree.print();
     tree.insert("20", "123", 123);
-    tree.print();
 
+    tree.find("10");
+    tree.find("0");
+    tree.find("12");
     tree.find("40");
-    tree.print();
-    tree.delete_tree();
 
-    tree.insert("20", "123", 123);
     tree.print();
 
+    tree.update("10", 20);
+    tree.print();
+    tree.update("40", 20);
+    tree.print();
+    tree.update("50", 20);
+    tree.print();
 
     return 0;
 }

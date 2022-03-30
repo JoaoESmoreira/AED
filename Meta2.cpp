@@ -129,8 +129,10 @@ public:
     SplayTree (const std::string &name, const std::string &hash, int value) : m_root(new Node(name, hash, value)) {}
 
     ~SplayTree () {
-        m_free_Splay(m_root);
-        m_root =  nullptr;
+        if (m_root != nullptr) {
+            m_free_Splay(m_root);
+            m_root =  nullptr;
+        }
     }
 
 
@@ -144,6 +146,14 @@ public:
 
     void find(const std::string &name) {
         m_root = m_search(m_root, name);
+    }
+
+    void delete_tree() {
+        if (m_root != nullptr) {
+            m_free_Splay(m_root);
+            m_root =  nullptr;
+            std::cout << "CATALOGO APAGADO\n";
+        }
     }
 };
 
@@ -203,6 +213,11 @@ int main() {
 
     tree.find("40");
     tree.print();
+    tree.delete_tree();
+
+    tree.insert("20", "123", 123);
+    tree.print();
+
 
     return 0;
 }

@@ -97,6 +97,25 @@ class SplayTree {
         return m_splay(node, name);
     }
 
+    Node* m_search(Node *node, const std::string &name) {
+        if (node != nullptr) {
+
+            if (name.compare(node->m_name) == 0) {
+                // i found it
+                std::cout << node->m_name << " " << node->m_hash << " " << node->m_value << "\nFIM\n";
+                return m_splay(node, name);
+            } else if (name.compare(node->m_name) < 0) {
+                node->left = m_search(node->left, name);
+            } else if (name.compare(node->m_name) > 0) {
+                node->right = m_search(node->right, name);
+            }
+            return m_splay(node, name);
+        } else {
+            std::cout << "ARTIGO NAO ENCONTRADO\n";
+            return nullptr;
+        }
+    }
+
     void m_print(Node *node) {
         if (node != nullptr) {
             std::cout << node->m_name << "\n";
@@ -121,6 +140,10 @@ public:
 
     void print() {
         m_print(m_root);
+    }
+
+    void find(const std::string &name) {
+        m_root = m_search(m_root, name);
     }
 };
 
@@ -176,6 +199,9 @@ int main() {
     tree.insert("30", "123", 123);
     tree.print();
     tree.insert("20", "123", 123);
+    tree.print();
+
+    tree.find("40");
     tree.print();
 
     return 0;

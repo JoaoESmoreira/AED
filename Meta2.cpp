@@ -137,8 +137,8 @@ class SplayTree {
 
     void m_print(Node *node) {
         if (node != nullptr) {
-            std::cout << node->m_name << " " << node->m_hash << " " << node->m_value << "\n";
             m_print(node->left);
+            std::cout << node->m_name << " " << node->m_hash << " " << node->m_value << "\n";
             m_print(node->right);
         }
     }
@@ -186,48 +186,35 @@ public:
 int main() {
 
     SplayTree tree;
+    std::string option, name, hash;
+    int value;
 
-    tree.insert("10", "123", 123);
-    tree.insert("15", "123", 123);
-    tree.insert("20", "123", 123);
-    tree.insert("30", "123", 123);
+    do {
+        std::cin >> option;
 
-    tree.insert("25", "123", 123);
-    tree.insert("12", "123", 123);
-    tree.insert("22", "123", 123);
+        if (option.compare("ARTIGO") == 0) {
+            // add artigo
+            std::cin >> name >> hash >> value;
+            tree.insert(name, hash, value);
 
-    tree.insert("23", "123", 123);
-    tree.insert("17", "123", 123);
-    tree.insert("21", "123", 123);
+        } else if (option.compare("OFERTA") == 0) {
+            // update clause
+            std::cin >> name >> value;
+            tree.update(name, value);
 
-    tree.insert("40", "123", 123);
-    tree.insert("18", "123", 123);
-    tree.insert("19", "123", 123);
+        } else if (option.compare("CONSULTA") == 0) {
+            // search for a clause
+            std::cin >> name;
+            tree.find(name);
 
-    tree.insert("16", "123", 123);
-    tree.insert("50", "123", 123);
+        } else if (option.compare("LISTAGEM") == 0) {
+            tree.print();
 
-    tree.insert("12", "123", 123);
-    tree.insert("20", "123", 123);
-    tree.insert("30", "123", 123);
+        } else if (option.compare("APAGA") == 0) {
+            tree.delete_tree();
 
-    tree.insert("10", "123", 123);
-    tree.insert("30", "123", 123);
-    tree.insert("20", "123", 123);
-
-    tree.find("10");
-    tree.find("0");
-    tree.find("12");
-    tree.find("40");
-
-    tree.print();
-
-    tree.update("10", 20);
-    tree.print();
-    tree.update("40", 20);
-    tree.print();
-    tree.update("50", 20);
-    tree.print();
+        }
+    } while (option.compare("FIM") != 0);
 
     return 0;
 }

@@ -198,7 +198,7 @@ int main() {
     std::string nome, aHash = "key";
     std::vector<std::string> names; 
     char aux[8];
-    int n = 100, aValue;
+    int n = 200000, aValue;
     
     for (int i = 0; i < n; ++i) {
         sprintf(aux, "%d", i);
@@ -212,6 +212,8 @@ int main() {
         tree.insert(nome, aHash, aValue);
     }
 
+    auto start = std::chrono::high_resolution_clock::now();
+
     for (int i = 0; i < n; ++i) {
 
         if ((rand()%100) + 1 < 90) {
@@ -223,6 +225,10 @@ int main() {
             tree.find(nome);
         }
     }
+    
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto all_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    std::cout << "Time of execution: " << all_time.count() << " milliiseconds\n";
 
     /*do {
         std::cin >> option;

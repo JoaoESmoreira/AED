@@ -1,4 +1,8 @@
 #include <iostream>
+#include <cstdlib> 
+#include <ctime> 
+#include <chrono>
+#include <vector>
 
 class SplayTree {
     struct Node {
@@ -83,7 +87,7 @@ class SplayTree {
 
         if (node == nullptr) {
             node = new Node(name, hash, value);
-            std::cout << "NOVO ARTIGO INSERIDO\n";
+            // std::cout << "NOVO ARTIGO INSERIDO\n";
             return node;
 
         } else if (name.compare(node->m_name) < 0) {
@@ -91,7 +95,7 @@ class SplayTree {
         } else if (name.compare(node->m_name) > 0) {
             node->right = m_insert(node->right, name, hash, value);
         } else {
-            std::cout << "ARTIGO JA EXISTENTE\n";
+            // std::cout << "ARTIGO JA EXISTENTE\n";
         }
 
         return m_splay(node, name);
@@ -102,7 +106,7 @@ class SplayTree {
 
             if (name.compare(node->m_name) == 0) {
                 // i found it
-                std::cout << node->m_name << " " << node->m_hash << " " << node->m_value << "\nFIM\n";
+                // std::cout << node->m_name << " " << node->m_hash << " " << node->m_value << "\nFIM\n";
                 return m_splay(node, name);
             } else if (name.compare(node->m_name) < 0) {
                 node->left = m_find(node->left, name);
@@ -111,7 +115,7 @@ class SplayTree {
             }
             return m_splay(node, name);
         } else {
-            std::cout << "ARTIGO NAO REGISTADO\n";
+            // std::cout << "ARTIGO NAO REGISTADO\n";
             return nullptr;
         }
     }
@@ -187,9 +191,40 @@ int main() {
 
     SplayTree tree;
     std::string option, name, hash;
-    int value;
+    //int value;
+    
+    srand((unsigned)time(0)); 
 
-    do {
+    std::string nome, aHash = "key";
+    std::vector<std::string> names; 
+    char aux[8];
+    int n = 100, aValue;
+    
+    for (int i = 0; i < n; ++i) {
+        sprintf(aux, "%d", i);
+        nome   = "Pintura";
+        nome   = nome + aux;
+        aValue = (rand() % 100) + 1;
+
+        if (i < 0.05*n)
+            names.push_back(nome);
+
+        tree.insert(nome, aHash, aValue);
+    }
+
+    for (int i = 0; i < n; ++i) {
+
+        if ((rand()%100) + 1 < 90) {
+            tree.find(names[i % ((int)0.05*n + 1)]);
+        } else {
+            sprintf(aux, "%d", i);
+            nome   = "Pintura";
+            nome   = nome + aux;
+            tree.find(nome);
+        }
+    }
+
+    /*do {
         std::cin >> option;
 
         if (option.compare("ARTIGO") == 0) {
@@ -214,7 +249,7 @@ int main() {
             tree.delete_tree();
 
         }
-    } while (option.compare("FIM") != 0);
+    } while (option.compare("FIM") != 0);*/
 
     return 0;
 }

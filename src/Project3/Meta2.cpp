@@ -206,9 +206,6 @@ int main() {
         nome   = nome + aux;
         aValue = (rand() % 100) + 1;
 
-        if (i < 0.05*n)
-            names.push_back(nome);
-
         tree.insert(nome, aHash, aValue);
     }
 
@@ -216,14 +213,11 @@ int main() {
 
     for (int i = 0; i < n; ++i) {
 
-        if ((rand()%100) + 1 < 90) {
-            tree.find(names[i % ((int)0.05*n + 1)]);
-        } else {
-            sprintf(aux, "%d", i);
-            nome   = "Pintura";
-            nome   = nome + aux;
-            tree.find(nome);
-        }
+        sprintf(aux, "%d", (rand() % 100));
+        nome   = "Pintura";
+        nome   = nome + aux;
+        tree.find(nome);
+    
     }
     
     auto stop = std::chrono::high_resolution_clock::now();

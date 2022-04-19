@@ -1,5 +1,5 @@
 CC = g++
-FLAGS = -Wall -Wextra
+FLAGS = -std=c++17 -Wall -Wextra -O2
 OBJS = Solution1.o
 .PHONY:	all clean
 

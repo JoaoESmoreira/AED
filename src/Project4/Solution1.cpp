@@ -66,7 +66,7 @@ int mediana (std::vector<int> raster) {
 int percentil (const std::vector<int> &raster, const int &value) {
     float count = 0;
 
-    for (int i = 0; i < (int)raster.size(); ++i) {
+    for (int i = 0; i < (int) raster.size(); ++i) {
         if (raster[i] < value)
             count++;
     }

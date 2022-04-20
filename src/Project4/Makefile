@@ -1,6 +1,6 @@
 CC = g++
 FLAGS = -std=c++17 -Wall -Wextra -O2
-OBJS = Solution1.o
+OBJS = Solution1.cpp
 .PHONY:	all clean
 
 all:		prog
@@ -9,10 +9,4 @@ prog:		$(OBJS)
 			$(CC) $(FLAGS) $(OBJS) -o prog
 
 clean:		
-			rm $(OBJS) prog
-
-%.o:		%.c
-			$(CC) $(FLAGS) $(OBJS) -c ^$
-
-
-Solution.o:	Solution1.cpp
+			rm prog

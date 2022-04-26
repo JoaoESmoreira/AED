@@ -6,10 +6,10 @@
 #include <chrono>
 
 
-void read_raster (const int &N, const int &M, std::vector<int> &raster) {
+void read_raster (/*const int &N,*/ const int &M, std::vector<int> &raster) {
     int input;
 
-    for (int i = 0; i < N * M; ++i) {
+    for (int i = 0; i < /*N **/ M; ++i) {
         // std::cin >> input;
         input = (rand() % 10000);
         raster.push_back(input);
@@ -78,7 +78,7 @@ int percentil (const std::vector<int> &raster, const int &value) {
     return (count / raster.size()) * 100;
 }
 
-int main() {
+int main(int argc, char *argv[]) {
 
     std::vector<int> raster;
     std::string command;
@@ -119,26 +119,24 @@ int main() {
 
     } while (command.compare("TCHAU"));*/
 
-    int M = 10000, N = 10000;
-    for (int i = 1; i <= 20; ++i) {
-        M *= i;
-        std::vector<int> raster;
-        read_raster(N, M, raster);
+    if (argc != 2)
+        return 1;
 
-        int aux;
+    int M = atoi(argv[1]);
+   
+    read_raster(M, raster);
 
-        auto start = std::chrono::high_resolution_clock::now();
+    int aux;
+    auto start = std::chrono::high_resolution_clock::now();
 
-        for (int i = 0; i < N*M; ++i) {
-            aux = rand() % 10000;
-            percentil(raster, aux);
-        }
-    std::cout << N << " " << M << "\n";
-
-        auto stop = std::chrono::high_resolution_clock::now();
-        auto all_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-        std::cout << "Time of execution: " << all_time.count() << " milliseconds\n";
+    for (int i = 0; i <M; ++i) {
+        aux = rand() % 10000;
+        percentil(raster, aux);
     }
+
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto all_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    std::cout << "N: " << M << " Time of execution: " << all_time.count() << " milliseconds\n";
 
 
     return 0;

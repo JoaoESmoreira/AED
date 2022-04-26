@@ -1,14 +1,14 @@
 #!/bin/bash
 
-ARG1=10000000
+ARG1=5000
 
-COUNT=5000000
+COUNT=5000
 
 make
 
-while [ $ARG1 -le 100000000 ]
+while [ $ARG1 -le 100000 ]
 do
-    ./prog >> output.txt $ARG1
+    ./prog $ARG1 >> output.txt 
     ARG1=$(($ARG1 + $COUNT))
 done
 

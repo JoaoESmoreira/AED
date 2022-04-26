@@ -109,6 +109,7 @@ int main(int argc, char *argv[]) {
     int aux;
     auto start = std::chrono::high_resolution_clock::now();
 
+    sorting(raster);
 
     for (int i = 0; i <M; ++i) {
         aux = rand() % 10000;

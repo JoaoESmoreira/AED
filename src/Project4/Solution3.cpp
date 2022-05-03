@@ -12,10 +12,33 @@ void read_raster (const int &M, std::vector<int> &raster) {
     }
 }
 
+void print_raster (std::vector<int> &raster) {
+    for (int i = 0; i < (int) raster.size(); ++i) {
+        std::cout << raster[i] << " ";
+    } 
+    std::cout << "\n";
+}
+
+void insertion_sort(std::vector<int> &raster, int begin, int end) {
+
+    // o i tem de ser até ao end inclusive, porque quando passo, passo o end e nao o tamanho real (N*M-1)
+    for (int i = begin; i <= end; ++i) {
+        for (int j = i; j > 0; --j) {
+            if (raster[j] < raster[j - 1])
+                std::swap(raster[j], raster[j - 1]);
+            else
+                break;
+        }
+    }
+
+}
+
 void quick_sort (std::vector<int> &raster, int start, int end) {
 
-    if (end - start < 1)
+    if (end - start <= 30) {
+        insertion_sort(raster, start, end);
         return;
+    }
 
     int pivot = start;
     int i = end;
@@ -47,12 +70,6 @@ void quick_sort (std::vector<int> &raster, int start, int end) {
 
 }
 
-void print_raster (std::vector<int> &raster) {
-    for (int i = 0; i < (int) raster.size(); ++i) {
-        std::cout << raster[i] << " ";
-    } 
-    std::cout << "\n";
-}
 
 int amplitude (std::vector<int> &raster) {
     return raster[raster.size() - 1] - raster[0];

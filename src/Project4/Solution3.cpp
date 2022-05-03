@@ -30,15 +30,33 @@ void insertion_sort(std::vector<int> &raster, int begin, int end) {
                 break;
         }
     }
-
 }
 
 void quick_sort (std::vector<int> &raster, int start, int end) {
 
+    // fazer insertion sort no caso de estarmos com arrays com tamanho menor que 30
     if (end - start <= 30) {
         insertion_sort(raster, start, end);
         return;
     }
+    // fazer a mediana com o primeiro, o do meio e o ultimo elemento
+    // ordenar esses elementos -> desta forma a mediana é o que se encontra no meio
+    // este é o que queremos escolher como pivot
+    // sendo assim, fazemos swap para o primeiro elemento, no final do processo
+    int m = (end - start) / 2;
+
+    if (raster[start] > raster[m]) {
+        std::swap(raster[start], raster[m]);
+    }
+    if (raster[m] > raster[end]) {
+        std::swap(raster[m], raster[end]);
+    }
+    if (raster[start] > raster[m]) {
+        std::swap(raster[start], raster[m]);
+    }
+
+    
+    std::swap(raster[start], raster[m]);
 
     int pivot = start;
     int i = end;
@@ -67,7 +85,6 @@ void quick_sort (std::vector<int> &raster, int start, int end) {
 
     quick_sort(raster, start, i - 1);
     quick_sort(raster, i + 1, end);
-
 }
 
 
@@ -103,6 +120,9 @@ int main() {
     std::vector<int> raster;
     std::string command;
     int N, M;
+
+
+    // DELETE!!!!!!!!!!!1
     std::cout << "\n";
 
     do {

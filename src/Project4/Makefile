@@ -1,6 +1,6 @@
 CC = g++
 FLAGS = -std=c++17 -Wall -Wextra
-OBJS = Solution2.cpp
+OBJS = Solution3.cpp
 .PHONY:	all clean
 
 all:		prog

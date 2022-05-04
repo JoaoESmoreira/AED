@@ -41,3 +41,6 @@ N: 85000 Time of execution: 89088 milliseconds
 N: 90000 Time of execution: 99999 milliseconds
 N: 95000 Time of execution: 114577 milliseconds
 N: 100000 Time of execution: 126766 milliseconds
+
+
+___________________________SOLUTION3________________________________

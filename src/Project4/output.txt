@@ -64,3 +64,26 @@ N: 85000 Time of execution: 17712 milliseconds
 N: 90000 Time of execution: 19126 milliseconds
 N: 95000 Time of execution: 23181 milliseconds
 N: 100000 Time of execution: 24191 milliseconds
+
+
+___________________________SOLUTION4________________________________
+N: 5000 Time of execution: 33 milliseconds
+N: 10000 Time of execution: 129 milliseconds
+N: 15000 Time of execution: 286 milliseconds
+N: 20000 Time of execution: 500 milliseconds
+N: 25000 Time of execution: 785 milliseconds
+N: 30000 Time of execution: 1130 milliseconds
+N: 35000 Time of execution: 1551 milliseconds
+N: 40000 Time of execution: 2020 milliseconds
+N: 45000 Time of execution: 2547 milliseconds
+N: 50000 Time of execution: 3143 milliseconds
+N: 55000 Time of execution: 3801 milliseconds
+N: 60000 Time of execution: 4532 milliseconds
+N: 65000 Time of execution: 5320 milliseconds
+N: 70000 Time of execution: 6157 milliseconds
+N: 75000 Time of execution: 7075 milliseconds
+N: 80000 Time of execution: 8038 milliseconds
+N: 85000 Time of execution: 9082 milliseconds
+N: 90000 Time of execution: 10199 milliseconds
+N: 95000 Time of execution: 11389 milliseconds
+N: 100000 Time of execution: 12584 milliseconds

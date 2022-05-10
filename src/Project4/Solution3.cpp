@@ -158,6 +158,7 @@ int main() {
         }
 
     } while (command.compare("TCHAU"));
+    print_raster(raster);
 
     return 0;
 }

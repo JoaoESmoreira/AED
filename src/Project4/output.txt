@@ -67,23 +67,23 @@ N: 100000 Time of execution: 24191 milliseconds
 
 
 ___________________________SOLUTION4________________________________
-N: 5000 Time of execution: 33 milliseconds
-N: 10000 Time of execution: 129 milliseconds
-N: 15000 Time of execution: 286 milliseconds
-N: 20000 Time of execution: 500 milliseconds
-N: 25000 Time of execution: 785 milliseconds
-N: 30000 Time of execution: 1130 milliseconds
-N: 35000 Time of execution: 1551 milliseconds
-N: 40000 Time of execution: 2020 milliseconds
-N: 45000 Time of execution: 2547 milliseconds
-N: 50000 Time of execution: 3143 milliseconds
-N: 55000 Time of execution: 3801 milliseconds
-N: 60000 Time of execution: 4532 milliseconds
-N: 65000 Time of execution: 5320 milliseconds
-N: 70000 Time of execution: 6157 milliseconds
-N: 75000 Time of execution: 7075 milliseconds
-N: 80000 Time of execution: 8038 milliseconds
-N: 85000 Time of execution: 9082 milliseconds
-N: 90000 Time of execution: 10199 milliseconds
-N: 95000 Time of execution: 11389 milliseconds
-N: 100000 Time of execution: 12584 milliseconds
+size: 5000 Time of execution: 1 milliseconds
+size: 10000 Time of execution: 2 milliseconds
+size: 15000 Time of execution: 2 milliseconds
+size: 20000 Time of execution: 3 milliseconds
+size: 25000 Time of execution: 4 milliseconds
+size: 30000 Time of execution: 5 milliseconds
+size: 35000 Time of execution: 6 milliseconds
+size: 40000 Time of execution: 7 milliseconds
+size: 45000 Time of execution: 8 milliseconds
+size: 50000 Time of execution: 9 milliseconds
+size: 55000 Time of execution: 10 milliseconds
+size: 60000 Time of execution: 11 milliseconds
+size: 65000 Time of execution: 12 milliseconds
+size: 70000 Time of execution: 13 milliseconds
+size: 75000 Time of execution: 14 milliseconds
+size: 80000 Time of execution: 15 milliseconds
+size: 85000 Time of execution: 16 milliseconds
+size: 90000 Time of execution: 17 milliseconds
+size: 95000 Time of execution: 18 milliseconds
+size: 100000 Time of execution: 19 milliseconds

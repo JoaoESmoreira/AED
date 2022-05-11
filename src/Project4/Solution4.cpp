@@ -12,8 +12,8 @@
 void read_raster (const int &size, int raster[]) {
 
     for (int i = 0; i < size; ++i) {
-        std::cin >> raster[i];
-        //raster[i] = (rand() % 10000);
+        // std::cin >> raster[i];
+        raster[i] = (rand() % 10000);
     }
 }
 
@@ -93,11 +93,11 @@ void print_raster (int raster[]) {
 
 
 
-int main(/*int argc, char *argv[]*/) {
+int main(int argc, char *argv[]) {
 
     int raster[100000];
     std::string command;
-    int N, M;
+    /*int N, M;
 
     do {
         std::cin >> command;
@@ -134,11 +134,11 @@ int main(/*int argc, char *argv[]*/) {
             }
         }
 
-    } while (command.compare("TCHAU"));
+    } while (command.compare("TCHAU"));*/
 
 
 
-    /*if (argc != 2)
+    if (argc != 2)
         return 1;
 
     int M = atoi(argv[1]);
@@ -158,6 +158,6 @@ int main(/*int argc, char *argv[]*/) {
     auto stop = std::chrono::high_resolution_clock::now();
     auto all_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
     std::cout << "size: " << M << " Time of execution: " << all_time.count() << " milliseconds\n";
-*/
+
     return 0;
 }

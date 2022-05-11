@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 
@@ -13,7 +12,6 @@ void read_raster (const int &size, int raster[]) {
 
     for (int i = 0; i < size; ++i) {
         std::cin >> raster[i];
-        //raster[i] = (rand() % 10000);
     }
 }
 
@@ -93,7 +91,7 @@ void print_raster (int raster[]) {
 
 
 
-int main(/*int argc, char *argv[]*/) {
+int main() {
 
     int raster[100000];
     std::string command;
@@ -136,28 +134,5 @@ int main(/*int argc, char *argv[]*/) {
 
     } while (command.compare("TCHAU"));
 
-
-
-    /*if (argc != 2)
-        return 1;
-
-    int M = atoi(argv[1]);
-   
-    read_raster(M, raster);
-
-    int aux;
-    auto start = std::chrono::high_resolution_clock::now();
-
-    counting_sort(raster, M);
-
-    for (int i = 0; i <M; ++i) {
-        aux = rand() % 10000;
-        percentil(raster, M, aux);
-    }
-
-    auto stop = std::chrono::high_resolution_clock::now();
-    auto all_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-    std::cout << "size: " << M << " Time of execution: " << all_time.count() << " milliseconds\n";
-*/
     return 0;
 }

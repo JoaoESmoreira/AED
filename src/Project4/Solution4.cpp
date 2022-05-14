@@ -95,7 +95,7 @@ void print_raster (int raster[]) {
 
 int main(int argc, char *argv[]) {
 
-    int raster[100000];
+    int raster[1000000];
     std::string command;
     /*int N, M;
 

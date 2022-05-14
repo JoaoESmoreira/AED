@@ -1,5 +1,5 @@
 CC = g++
-FLAGS = -std=c++17 -Wall -Wextra -pedantic
+FLAGS = -std=c++17 -Wall -Wextra
 OBJS = Solution4.cpp
 .PHONY:	all clean
 

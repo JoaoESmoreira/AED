@@ -87,3 +87,23 @@ size: 85000 Time of execution: 16 milliseconds
 size: 90000 Time of execution: 17 milliseconds
 size: 95000 Time of execution: 18 milliseconds
 size: 100000 Time of execution: 19 milliseconds
+
+size: 50000 Time of execution: 9 milliseconds
+size: 100000 Time of execution: 20 milliseconds
+size: 150000 Time of execution: 32 milliseconds
+size: 200000 Time of execution: 42 milliseconds
+size: 250000 Time of execution: 57 milliseconds
+size: 300000 Time of execution: 74 milliseconds
+size: 350000 Time of execution: 100 milliseconds
+size: 400000 Time of execution: 102 milliseconds
+size: 450000 Time of execution: 112 milliseconds
+size: 500000 Time of execution: 126 milliseconds
+size: 550000 Time of execution: 140 milliseconds
+size: 600000 Time of execution: 153 milliseconds
+size: 650000 Time of execution: 164 milliseconds
+size: 700000 Time of execution: 193 milliseconds
+size: 750000 Time of execution: 203 milliseconds
+size: 800000 Time of execution: 210 milliseconds
+size: 850000 Time of execution: 219 milliseconds
+size: 900000 Time of execution: 238 milliseconds
+size: 950000 Time of execution: 262 milliseconds

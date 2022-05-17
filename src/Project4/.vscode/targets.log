@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sat May 14 14:36:31 2022
+# Make data base, printed on Tue May 17 14:45:54 2022
 
 # Variables
 
@@ -49,7 +50,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:58957
+JOURNAL_STREAM = 8:65751
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -75,9 +76,9 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 LC_CTYPE = pt_PT.UTF-8
 # makefile (from 'Makefile', line 3)
-OBJS = Solution4.cpp
+OBJS = SolutionTimes.cpp
 # environment
-MANAGERPID = 2067
+MANAGERPID = 2044
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -93,7 +94,7 @@ PATH = /home/joao_moreira/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/jmoreira:@/tmp/.ICE-unix/2324,unix/jmoreira:/tmp/.ICE-unix/2324
+SESSION_MANAGER = local/jmoreira:@/tmp/.ICE-unix/2347,unix/jmoreira:/tmp/.ICE-unix/2347
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -111,7 +112,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = d4566d68498b4e2994caae678dc57ffa
+INVOCATION_ID = e6b5a0e6b8d64d3fbc86ca7ec5b76566
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/96/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -135,7 +136,7 @@ PWD = /home/joao_moreira/Desktop/MyProjects/AED/ProjetoGeral/src/Project4
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2286
+SSH_AGENT_PID = 2308
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -153,7 +154,7 @@ VSCODE_CODE_CACHE_PATH = /home/joao_moreira/.config/Code/CachedData/da15b6fd3ef8
 # environment
 LOGNAME = joao_moreira
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -191,7 +192,7 @@ CC = g++
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7a18443c-0c2c-4b55-995f-0dd489ac45cf.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-835edfe1-c75e-4d6d-8f55-81d656579b68.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -213,7 +214,7 @@ LC_TELEPHONE = pt_PT.UTF-8
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/joao_moreira/Desktop/MyProjects/AED/ProjetoGeral
+OLDPWD = /home/joao_moreira/Desktop/MyProjects/AED/ProjetoGeral/src
 # default
 .VARIABLES := 
 # automatic
@@ -249,11 +250,11 @@ SNAP_NAME = code
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/db515b51_63f3_424e_89d1_da2bb9f4653d
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/68aae025_6d8b_4fe5_9506_03f6c7c2180e
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.150
+GNOME_TERMINAL_SERVICE = :1.110
 # default
 SUFFIXES := 
 # makefile (from 'Makefile', line 2)
@@ -276,9 +277,8 @@ LC_ADDRESS = pt_PT.UTF-8
 LANG = C
 # environment
 TERM = xterm-256color
- 
 # environment
-VSCODE_PID = 9862
+VSCODE_PID = 3414
 # variable set hash-table stats:
 # Load=134/1024=13%, Rehash=0, Collisions=24/166=14%
 
@@ -288,6 +288,7 @@ VSCODE_PID = 9862
 
 # Directories
 
+ 
 # . (device 66309, inode 6294002): 14 files, no impossibilities.
 
 # 14 files, no impossibilities in 1 directories.
@@ -322,11 +323,11 @@ all: prog
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-13 21:40:31.356343354
+#  Last modified 2022-05-17 14:45:53.731621291
 #  File has been updated.
 #  Successfully updated.
 
-prog: Solution4.cpp
+prog: SolutionTimes.cpp
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
 #  File does not exist.
@@ -339,15 +340,15 @@ prog: Solution4.cpp
 # automatic
 # * := 
 # automatic
-# + := Solution4.cpp
+# + := SolutionTimes.cpp
 # automatic
 # | := 
 # automatic
-# < := Solution4.cpp
+# < := SolutionTimes.cpp
 # automatic
-# ^ := Solution4.cpp
+# ^ := SolutionTimes.cpp
 # automatic
-# ? := Solution4.cpp
+# ? := SolutionTimes.cpp
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=2/14=14%
 #  recipe to execute (from 'Makefile', line 9):
@@ -359,13 +360,6 @@ prog: Solution4.cpp
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-Solution4.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-11 01:07:42.04514621
-#  File has been updated.
-#  Successfully updated.
-
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -373,6 +367,13 @@ clean:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 12):
 			rm prog
+
+# Not a target:
+SolutionTimes.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-17 14:45:24.587640717
+#  File has been updated.
+#  Successfully updated.
 
 # files hash-table stats:
 # Load=8/1024=1%, Rehash=0, Collisions=0/26=0%
@@ -388,6 +389,6 @@ clean:
 # strcache performance: lookups = 36 / hit rate = 38%
 # hash-table stats:
 # Load=22/8192=0%, Rehash=0, Collisions=1/36=3%
-# Finished Make data base on Sat May 14 14:36:31 2022
+# Finished Make data base on Tue May 17 14:45:54 2022
 
  

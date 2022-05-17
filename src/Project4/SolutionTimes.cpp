@@ -111,17 +111,28 @@ int mediana (std::vector<int> raster) {
     } 
     return raster[((size_0) / 2)];
 }
-    
-int percentil (const std::vector<int> &raster, const int &value) {
-    float count = 0;
 
-    for (int i = 0; i < (int) raster.size(); ++i) {
-        if (raster[i] < value)
-            count++;
-        else
-            return (count / raster.size()) * 100;
+int percentil(std::vector<int> arr, int size, int value) {
+    int pivot;
+    int low  = 0;
+    int high = size;
+ 
+    while (low < high) {
+        // passo
+        pivot = (high + low) / 2;
+
+        // split à esquerda
+        if (value <= arr[pivot]) {
+            high = pivot;
+
+        // split à direita
+        } else {
+            low = pivot + 1;
+        }
     }
-    return (count / raster.size()) * 100;
+
+    float conversion = low;
+    return (conversion / size) * 100;
 }
 
 
@@ -184,7 +195,7 @@ int main(int argc, char *argv[]) {
 
     for (int i = 0; i <M; ++i) {
         aux = rand() % 10000;
-        percentil(raster, aux);
+        percentil(raster, M, aux);
     }
 
     auto stop = std::chrono::high_resolution_clock::now();

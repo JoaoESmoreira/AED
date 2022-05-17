@@ -107,3 +107,26 @@ size: 800000 Time of execution: 210 milliseconds
 size: 850000 Time of execution: 219 milliseconds
 size: 900000 Time of execution: 238 milliseconds
 size: 950000 Time of execution: 262 milliseconds
+
+
+___________________________SOLUTION3________________________________
+N: 5000 Time of execution: 5 milliseconds
+N: 10000 Time of execution: 15 milliseconds
+N: 15000 Time of execution: 30 milliseconds
+N: 20000 Time of execution: 51 milliseconds
+N: 25000 Time of execution: 80 milliseconds
+N: 30000 Time of execution: 114 milliseconds
+N: 35000 Time of execution: 157 milliseconds
+N: 40000 Time of execution: 206 milliseconds
+N: 45000 Time of execution: 269 milliseconds
+N: 50000 Time of execution: 332 milliseconds
+N: 55000 Time of execution: 407 milliseconds
+N: 60000 Time of execution: 494 milliseconds
+N: 65000 Time of execution: 588 milliseconds
+N: 70000 Time of execution: 777 milliseconds
+N: 75000 Time of execution: 947 milliseconds
+N: 80000 Time of execution: 995 milliseconds
+N: 85000 Time of execution: 1221 milliseconds
+N: 90000 Time of execution: 1250 milliseconds
+N: 95000 Time of execution: 1377 milliseconds
+N: 100000 Time of execution: 1433 milliseconds
